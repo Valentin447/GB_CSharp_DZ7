@@ -1,6 +1,7 @@
 ﻿void Task47() 
 {
     // Задача 47: Задайте двумерный массив размером m×n, заполненный случайными вещественными числами, округлёнными до одного знака.
+
     Random random = new Random();
     int rows = random.Next(4, 8);
     int columns = random.Next(4, 8);
@@ -8,13 +9,33 @@
     Console.WriteLine($"Размер массива: {rows} x {columns}");
     FillArreyDouble(numbers, -99, 99, 1);
     ShowArreyDouble(numbers);
-
-
 }
 void Task50() 
 {
     // Задача 50: Напишите программу, которая на вход принимает индексы элемента в двумерном массиве,
     // и возвращает значение этого элемента или же указание, что такого элемента нет.
+    Random random = new Random();
+    int rows = random.Next(4, 8);
+    int columns = random.Next(4, 8);
+    double[,] numbers = new double[rows, columns];
+    Console.WriteLine($"Размер массива: {rows} x {columns}");
+    FillArreyDouble(numbers, -99, 99);
+    ShowArreyDouble(numbers);
+    Console.WriteLine("-----------------------");
+
+    Console.Write("Введите индекс строки: ");
+    int indexRow = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Введите индекс столбца: ");
+    int indexColumn = Convert.ToInt32(Console.ReadLine());
+
+    if (indexRow >= rows || indexColumn >= columns || indexRow < 0 || indexColumn < 0)
+    {
+        Console.WriteLine("Элемента с таким индексом не существует.");
+    }
+    else
+    {
+        Console.WriteLine($"Элемент с индексом {indexRow} x {indexColumn} равен: {numbers[indexRow, indexColumn]}");  
+    }
 }
 void Task52() 
 {
@@ -42,6 +63,6 @@ void FillArreyDouble(double[,] arr, double min = 0, double max = 0, int round = 
         }
     }
 }
-Task47();
-//Task50();
+//Task47();
+Task50();
 //Task52();
